@@ -5,7 +5,7 @@ echo "Starting FlowManager Python..."
 
 # Check dependencies
 echo "Checking dependencies..."
-python test_install.py
+python3 test_install.py
 
 if [ $? -eq 0 ]; then
     echo "Starting production server..."
