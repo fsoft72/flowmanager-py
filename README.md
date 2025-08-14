@@ -5,6 +5,7 @@ This is a Python3 + FastAPI port of the original Node.js FlowManager application
 ## Quick Start
 
 1. **Setup virtual environment and install dependencies:**
+
    ```bash
    python3 -m venv venv
    source venv/bin/activate
@@ -12,6 +13,7 @@ This is a Python3 + FastAPI port of the original Node.js FlowManager application
    ```
 
 2. **Generate SSL certificates:**
+
    ```bash
    ./generate_ssl_simple.sh    # Works with all OpenSSL versions
    ```
@@ -34,22 +36,21 @@ This is a Python3 + FastAPI port of the original Node.js FlowManager application
 ### Certificate Generation Options:
 
 ```bash
-./generate_ssl_simple.sh    # ✅ Fixed bash script (works with all OpenSSL)
-python generate_ssl_python.py    # ✅ Pure Python (no OpenSSL dependency)
+python tools/generate_ssl_python.py    # ✅ Pure Python (no OpenSSL dependency)
 ```
 
 ## Scripts Overview
 
-| Script | Purpose | Protocol |
-|--------|---------|----------|
-| `./run_production.py` | Production server | HTTPS (auto-detect) |
-| `./run_dev.py` | Development server | HTTP only |
-| `./start.sh` | Auto-setup + production | HTTPS (auto-detect) |
+| Script                | Purpose                 | Protocol            |
+| --------------------- | ----------------------- | ------------------- |
+| `./run_production.py` | Production server       | HTTPS (auto-detect) |
+| `./run_dev.py`        | Development server      | HTTP only           |
+| `./start.sh`          | Auto-setup + production | HTTPS (auto-detect) |
 
 ## API Endpoints
 
 - `GET /hello` - Test endpoint (returns encrypted response)
-- `POST /backup` - Save backup files  
+- `POST /backup` - Save backup files
 - `GET /projects` - List all project keys
 - `GET /targets` - List all projects with names
 - `GET /import` - Import latest backup
