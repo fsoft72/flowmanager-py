@@ -9,7 +9,7 @@ python3 test_install.py
 
 if [ $? -eq 0 ]; then
     echo "Starting production server..."
-    ./run_production.py
+    ./run_production.sh
 else
     echo "Dependencies check failed."
     exit 1
