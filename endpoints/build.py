@@ -48,7 +48,9 @@ def init(app: FastAPI, cfg: dict):
             # Build commands for each target
             cmds = []
             for target in prj["targets"]:
-                cmd = f"{cfg['system']['python3']} {cfg['system']['flow2code']['path']} -t {target['template']} -o {target['path']} {unique_filename}"
+                templates_dir = target.get("templates_dir") or cfg.get("templates_dir")
+                templates_dir_arg = f" --templates-dir {templates_dir}" if templates_dir else ""
+                cmd = f"{cfg['system']['python3']} {cfg['system']['flow2code']['path']} -t {target['template']}{templates_dir_arg} -o {target['path']} {unique_filename}"
                 cmds.append(cmd)
 
             print("Commands:", cmds)
