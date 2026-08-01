@@ -36,7 +36,11 @@ def init(app: FastAPI, cfg: dict):
                 )
 
             # Create destination path
-            dest_filename = f"{target['path']}/work/liweflow.json.gz"
+            json_dir = proj.get("json_dir") or target.get("json_dir")
+            if json_dir:
+                dest_filename = os.path.join(json_dir, "liweflow.json.gz")
+            else:
+                dest_filename = f"{target['path']}/work/liweflow.json.gz"
             os.makedirs(os.path.dirname(dest_filename), exist_ok=True)
 
             # Convert to JSON and compress

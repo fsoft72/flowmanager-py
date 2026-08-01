@@ -13,13 +13,17 @@ def targets_save_module(proj, module):
 
     # Generate everything for all targets
     for target in targets:
-        savemodule(target["path"], module)
+        json_dir = proj.get("json_dir") or target.get("json_dir")
+        savemodule(target["path"], module, json_dir=json_dir)
 
     return {"ok": 1}
 
 
-def savemodule(path, module):
-    dest_dir = f"{path}/work/modules"
+def savemodule(path, module, json_dir=None):
+    if json_dir:
+        dest_dir = json_dir
+    else:
+        dest_dir = f"{path}/work/modules"
 
     # Create dest_dir if it does not exist
     os.makedirs(dest_dir, exist_ok=True)
